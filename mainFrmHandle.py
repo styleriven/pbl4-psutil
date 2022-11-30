@@ -1,5 +1,6 @@
 
 import time
+from datetime import datetime
 import shutil
 from SetInterVal import setInterval
 import psutil
@@ -7,6 +8,8 @@ from mainFrm import *
 from qt_material import *
 from PyQt5 import *
 
+
+from PyQt5.QtChart import QChart, QChartView, QLineSeries
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
@@ -22,18 +25,16 @@ platforms= {
 }
 
 class MAINFRMHANDLE(QMainWindow):
-    def __init__(self,app) :
+    k=0
+    uname = platform.uname()
+    series =QLineSeries()
+    def __init__(self) :
         QMainWindow.__init__(self)
         self.ui=Ui_MainWindow()
         self.ui.setupUi(self)
         # Load Style sheet, this will overide and fonts selected in qt designer
        
-        apply_stylesheet(app,theme='dark_blue.xml')
-        #remove window title bar
-        self.setWindowFlags(QtCore.Qt.FramelessWindowHint)
-        #set main background to trasparent
-        self.setAttribute(QtCore.Qt.WA_TranslucentBackground)
-        # set main background to transparent
+        
         self.shadow = QGraphicsDropShadowEffect(self)
         self.shadow.setBlurRadius(50)
         self.shadow.setXOffset(0)
@@ -47,12 +48,7 @@ class MAINFRMHANDLE(QMainWindow):
         self.setWindowTitle("UTIL Manager")
         
        
-        #event handler
-        self.ui.minimize_button.clicked.connect(lambda:self.showMinimized())
-        #Close
-        self.ui.close_button.clicked.connect(lambda:self.cancel())
-        #Restore/Maximize
-        self.ui.restore_button.clicked.connect(lambda:self.restore_or_maximize())   
+        
         
         #pages
         #Home
@@ -61,40 +57,36 @@ class MAINFRMHANDLE(QMainWindow):
         self.ui.cpu_page_btn.clicked.connect(lambda:self.ui.stackedWidget.setCurrentWidget(self.ui.CPU))
         #RAM
         self.ui.memory_page_btn.clicked.connect(lambda:self.ui.stackedWidget.setCurrentWidget(self.ui.Memory))
-        #Swap
-        self.ui.swap_page_btn.clicked.connect(lambda:self.ui.stackedWidget.setCurrentWidget(self.ui.Swap))
         #Disk  
         self.ui.storage_page_btn.clicked.connect(lambda:self.ui.stackedWidget.setCurrentWidget(self.ui.Storage))
         
-        def moveWindow(e):
-            if self.isMaximized()==False:
-                if e.buttons()==Qt.LeftButton:
-                    self.move(self.pos()+e.globalPos() - self.clickPostion)
-                    self.clickPostion = e.globalPos()
-                    e.accept() 
- 
-    
-        self.ui.header_frame.mouseMoveEvent = moveWindow
-        
-
         
         self.ui.menu_btn.clicked.connect(lambda:self.slideLeftMenu())
         
         # for w in self.ui.menu_frame.findChildren(QPushButton):
         #     w.clicked.connect(self.applyButtonStyle)
-        global intervalCPU,intervalRam
+        global intervalCPU,intervalRam,intervalTime
         intervalCPU = setInterval(1, self.cpu)
         intervalRam = setInterval(1, self.ram)
+        intervalTime = setInterval(1, self.dongHo)
         self.storage()
-       
+        self.Hello()
         time.sleep(1)
         
         self.show()
     
-    def cancel(self):
+    
+    
+    def Hello(self):
+        self.ui.lblHello.setText("Hello " + self.uname.node);
+    
+    def closeEvent(self, a0: QtGui.QCloseEvent) -> None:
         intervalCPU.cancel()
         intervalRam.cancel()
-        self.close()
+        intervalTime.cancel()
+        return super().closeEvent(a0)
+    
+    
     def storage(self):
         global platforms
         storage_device= psutil.disk_partitions(all=False)
@@ -126,6 +118,7 @@ class MAINFRMHANDLE(QMainWindow):
             
             
     def ram(self):
+        print("ram")
         totalRam = 1.0
         totalRam = psutil.virtual_memory().total * totalRam
         totalRam = totalRam /(1024*1024*1024)
@@ -135,32 +128,24 @@ class MAINFRMHANDLE(QMainWindow):
         availRam = psutil.virtual_memory().available * availRam
         availRam = availRam /(1024*1024*1024)
         self.ui.lblAvailableRam.setText(str("{:.4f}".format(availRam) + 'GB'))
-        self.ui.lblAvailableRam.setStyleSheet("border: 2px  groove rgb(6,233,38);")
+
         
         ramUesd = 1.0
         ramUesd = psutil.virtual_memory().used * ramUesd
         ramUesd = ramUesd /(1024*1024*1024)
         self.ui.lblUsedRam.setText(str("{:.4f}".format(ramUesd) + 'GB'))
-        self.ui.lblUsedRam.setStyleSheet("border: 2px  groove rgb(6,201,233);")
         
         
         ramFree = 1.0
         ramFree = psutil.virtual_memory().free * ramFree
         ramFree = ramFree /(1024*1024*1024)
         self.ui.lblFreeRam.setText(str("{:.4f}".format(ramFree) + 'GB'))
-        self.ui.lblFreeRam.setStyleSheet("border: 2px  groove rgb(233,6,201);")
         
         
-        self.ui.ram_percentage.spb_setMinimum((0,0,0))
-        self.ui.ram_percentage.spb_setMaximum((totalRam,totalRam,totalRam))
-        self.ui.ram_percentage.spb_setValue((availRam, ramUesd, ramFree))
-        self.ui.ram_percentage.spb_lineColor(((6,233,38), (6,201,233), (233,6,201)))
-        self.ui.ram_percentage.spb_setInitialPos(('West','West','West'))
-        self.ui.ram_percentage.spb_lineWidth(15)
-        self.ui.ram_percentage.spb_lineCap(('RoundCap','RoundCap','RoundCap'))
-        self.ui.ram_percentage.spb_setPathHidden(True)        
+              
     
     def cpu(self):
+        print("cpu")
         
         core =psutil.cpu_count()
         self.ui.lblCores.setText(str(core))
@@ -180,18 +165,33 @@ class MAINFRMHANDLE(QMainWindow):
         cpuSystem=psutil.cpu_times_percent().system
         self.ui.lblCPU_System.setText(str(cpuSystem))
         
-        self.ui.cpu_percentage.rpb_setMaximum(100)
-        self.ui.cpu_percentage.rpb_setMinimum(0)
-        self.ui.cpu_percentage.rpb_setValue(cpuPer)
-        self.ui.cpu_percentage.rpb_setBarStyle('Hybrid2')
-        self.ui.cpu_percentage.rpb_setLineColor((255,30,99))
-        self.ui.cpu_percentage.rpb_setPieColor((45,74,83))
-        self.ui.cpu_percentage.rpb_setTextColor((255,255,255))
-        self.ui.cpu_percentage.rpb_setInitialPos('West')
-        self.ui.cpu_percentage.rpb_setTextFont('Arial')
-        self.ui.cpu_percentage.rpb_setLineWidth(15)
-        self.ui.cpu_percentage.rpb_setPathWidth(15)
-        self.ui.cpu_percentage.rpb_setLineCap('RoundCap')
+        self.series.append(0, 0)
+        
+
+        x = datetime.datetime.now().strftime("%X")
+        self.series.append(QPointF(cpuPer, x))
+        self.chart = QChart()
+        self.chart.legend().hide()
+        self.chart.addSeries(self.series)
+        self.chart.createDefaultAxes()
+        self.chart.setTitle("CPU")
+
+        self.chartView = QChartView(self.chart)
+        self.chartView.setRenderHint(QPainter.Antialiasing)
+        self.chart.setAnimationOptions(QChart.AllAnimations)
+        self.chartView.chart().setTheme(QChart.ChartThemeDark)
+
+
+        sizePolicy = QSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.chartView.sizePolicy().hasHeightForWidth())
+        self.chartView.setSizePolicy(sizePolicy)
+        self.chartView.setMinimumSize(QSize(0, 300))
+        layout = QVBoxLayout();
+        layout.addWidget(self.chartView)
+        self.ui.frame_25.setLayout(layout)
+        self.ui.frame_25.setStyleSheet(u"background-color: transparent")
         
     def create_table_widget(self,rowPosition,columnPosition,text,tableName):
         qtableWidgetItem = QTableWidgetItem()   
@@ -202,8 +202,14 @@ class MAINFRMHANDLE(QMainWindow):
         qtableWidgetItem.setText(str(text))
 
     
-    def mousePressEvent(self, event) :
-        self.clickPostion = event.globalPos()   
+    def dongHo(self):
+        print("Dong Ho")
+        now = datetime.now()
+
+        s = '{0:0>2d}:{1:0>2d}:{2:0>2d}'.format(now.hour, now.minute, now.second)
+        print(s)
+        self.ui.lblTime.setText(str(s))
+
         
     def slideLeftMenu(self):
         width=self.ui.menu_frame.width()
@@ -219,11 +225,3 @@ class MAINFRMHANDLE(QMainWindow):
         self.animatiion.start()
         
         
-            
-    def restore_or_maximize(self):
-        if self.isMaximized():
-            self.showNormal()
-            self.ui.restore_button.setIcon(QtGui.QIcon(":/icons/icon/cil-window-restore.svg"))
-        else:
-            self.showMaximized()
-            self.ui.restore_button.setIcon(QtGui.QIcon(":/icons/icon/square.svg"))    
