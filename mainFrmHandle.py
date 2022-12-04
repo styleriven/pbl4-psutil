@@ -12,7 +12,7 @@ import matplotlib
 matplotlib.use('Qt5Agg')
 from matplotlib.figure import Figure
 
-
+import platform, subprocess, re
 from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
@@ -34,6 +34,7 @@ class MAINFRMHANDLE(QMainWindow):
     uname = platform.uname()
     heightCPU=[]
     n_data = 30
+    qVersion = uname.version.split(' ')
     for i in range(0,n_data):
         heightCPU.append(0)
     def __init__(self) :
@@ -90,14 +91,29 @@ class MAINFRMHANDLE(QMainWindow):
         self.timer.timeout.connect(self.update_CPU)
         
         self.timer.start()
-        
+        self.Home()
         
         self.storage()
         self.Hello()
 
         self.show()
     
+    def Home(self):
+        self.ui.lblSystem.setText(self.uname.system)
+        self.ui.lblVersion.setText(self.qVersion[0])
+        self.ui.lblRecentlyupdate.setText(self.qVersion[2]+" "+self.qVersion[3]+" "+self.qVersion[4]+" "+self.qVersion[7]+" "+self.qVersion[5])
+        self.ui.lblChip.setText(str(self.get_processor_name()))
     
+    def get_processor_name(self):
+        if platform.system() == "Windows":
+            return platform.processor()
+        elif platform.system() == "Linux":
+            command = "cat /proc/cpuinfo"
+            all_info = subprocess.check_output(command, shell=True).decode().strip()
+            for line in all_info.split("\n"):
+                if "model name" in line:
+                    return re.sub( ".*model name.*:", "", line,1)
+        return ""
     
     def Hello(self):
         self.ui.lblHello.setText("Hello " + self.uname.node);
