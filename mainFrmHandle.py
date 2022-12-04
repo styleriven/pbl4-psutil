@@ -2,19 +2,24 @@
 import time
 from datetime import datetime
 import shutil
-from SetInterVal import setInterval
 import psutil
 from mainFrm import *
 from qt_material import *
 from PyQt5 import *
+from matplotlib import pyplot as plt
+
+import matplotlib
+matplotlib.use('Qt5Agg')
+from matplotlib.figure import Figure
 
 
-from PyQt5.QtChart import QChart, QChartView, QLineSeries
+from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.sip import *
-from PySide2extn import *
+
+
 
 platforms= {
     'linux': 'Linux',
@@ -25,9 +30,12 @@ platforms= {
 }
 
 class MAINFRMHANDLE(QMainWindow):
-    k=0
+    
     uname = platform.uname()
-    series =QLineSeries()
+    heightCPU=[]
+    n_data = 30
+    for i in range(0,n_data):
+        heightCPU.append(0)
     def __init__(self) :
         QMainWindow.__init__(self)
         self.ui=Ui_MainWindow()
@@ -46,8 +54,8 @@ class MAINFRMHANDLE(QMainWindow):
         self.setWindowIcon(QtGui.QIcon(":/icons/icon/airplay.svg"))
         #set window title
         self.setWindowTitle("UTIL Manager")
-        
-       
+        global tCPU 
+        tCPU = 0
         
         
         #pages
@@ -65,14 +73,28 @@ class MAINFRMHANDLE(QMainWindow):
         
         # for w in self.ui.menu_frame.findChildren(QPushButton):
         #     w.clicked.connect(self.applyButtonStyle)
-        global intervalCPU,intervalRam,intervalTime
-        intervalCPU = setInterval(1, self.cpu)
-        intervalRam = setInterval(1, self.ram)
-        intervalTime = setInterval(1, self.dongHo)
+        
+        # draw cpu 
+        
+        
+        #end
+        
+        self.interval=1000
+        
+        self.timer = QtCore.QTimer()
+        self.timer.setInterval(self.interval)
+        self.timer.timeout.connect(self.cpu)
+        self.timer.timeout.connect(self.ram)
+        self.timer.timeout.connect(self.dongHo)
+        self.veCPU()
+        self.timer.timeout.connect(self.update_CPU)
+        
+        self.timer.start()
+        
+        
         self.storage()
         self.Hello()
-        time.sleep(1)
-        
+
         self.show()
     
     
@@ -81,9 +103,6 @@ class MAINFRMHANDLE(QMainWindow):
         self.ui.lblHello.setText("Hello " + self.uname.node);
     
     def closeEvent(self, a0: QtGui.QCloseEvent) -> None:
-        intervalCPU.cancel()
-        intervalRam.cancel()
-        intervalTime.cancel()
         return super().closeEvent(a0)
     
     
@@ -142,11 +161,41 @@ class MAINFRMHANDLE(QMainWindow):
         self.ui.lblFreeRam.setText(str("{:.4f}".format(ramFree) + 'GB'))
         
         
-              
+        
+    def veCPU(self):
+        
+        # self.fig = plt.gcf()
+        
+            # Create bars and choose color
+        self.canvas = MplCanvas(self, width=5, height=4, dpi=100)
+
+        
+        self.x_data = list(range(self.n_data))
+        self.y_data = self.heightCPU
+        
+        
+        self.update_CPU()
+        layout = QVBoxLayout()
+        #self.canvas = FigureCanvas(self.fig)
+        layout.addWidget(self.canvas)
+        self.ui.frame_25.setLayout(layout)
+        self.ui.frame_25.setStyleSheet(u"background-color: transparent")
+        
+    def update_CPU(self):
+        # Drop off the first y element, append a new one.
+        self.y_data = self.heightCPU
+        
+        self.canvas.axes.cla()  # Clear the canvas.
+        self.canvas.axes.set_title("CPU")
+        self.canvas.axes.set_ylim(0,100)
+
+        self.canvas.axes.plot(self.x_data, self.y_data, color='green')
+        # Trigger the canvas to update and redraw.
+        self.canvas.draw()
     
     def cpu(self):
         print("cpu")
-        
+
         core =psutil.cpu_count()
         self.ui.lblCores.setText(str(core))
         
@@ -165,33 +214,11 @@ class MAINFRMHANDLE(QMainWindow):
         cpuSystem=psutil.cpu_times_percent().system
         self.ui.lblCPU_System.setText(str(cpuSystem))
         
-        self.series.append(0, 0)
         
+        self.heightCPU=self.heightCPU[1:]+[cpuPer]
 
-        x = datetime.datetime.now().strftime("%X")
-        self.series.append(QPointF(cpuPer, x))
-        self.chart = QChart()
-        self.chart.legend().hide()
-        self.chart.addSeries(self.series)
-        self.chart.createDefaultAxes()
-        self.chart.setTitle("CPU")
-
-        self.chartView = QChartView(self.chart)
-        self.chartView.setRenderHint(QPainter.Antialiasing)
-        self.chart.setAnimationOptions(QChart.AllAnimations)
-        self.chartView.chart().setTheme(QChart.ChartThemeDark)
-
-
-        sizePolicy = QSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.chartView.sizePolicy().hasHeightForWidth())
-        self.chartView.setSizePolicy(sizePolicy)
-        self.chartView.setMinimumSize(QSize(0, 300))
-        layout = QVBoxLayout();
-        layout.addWidget(self.chartView)
-        self.ui.frame_25.setLayout(layout)
-        self.ui.frame_25.setStyleSheet(u"background-color: transparent")
+        
+        
         
     def create_table_widget(self,rowPosition,columnPosition,text,tableName):
         qtableWidgetItem = QTableWidgetItem()   
@@ -203,11 +230,10 @@ class MAINFRMHANDLE(QMainWindow):
 
     
     def dongHo(self):
-        print("Dong Ho")
+        #print("Dong Ho")
         now = datetime.now()
 
         s = '{0:0>2d}:{1:0>2d}:{2:0>2d}'.format(now.hour, now.minute, now.second)
-        print(s)
         self.ui.lblTime.setText(str(s))
 
         
@@ -223,5 +249,12 @@ class MAINFRMHANDLE(QMainWindow):
         self.animatiion.setEndValue(newWidth)
         self.animatiion.setEasingCurve(QtCore.QEasingCurve.InOutQuart)
         self.animatiion.start()
+ 
+
+class MplCanvas(FigureCanvas):
+
+    def __init__(self, parent=None, width=5, height=4, dpi=100):
+        fig = Figure(figsize=(width, height), dpi=dpi)
+        self.axes = fig.add_subplot(111)
         
-        
+        super(MplCanvas, self).__init__(fig)       

@@ -1,9 +1,6 @@
 import threading
 import time
 
-
-
-
 class setInterval :
     def __init__(self,interval,action) :
         self.interval=interval
@@ -11,6 +8,7 @@ class setInterval :
         self.stopEvent=threading.Event()
         thread=threading.Thread(target=self.__setInterval)
         thread.start()
+        
 
     def __setInterval(self) :
         nextTime=time.time()+self.interval

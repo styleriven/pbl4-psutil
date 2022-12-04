@@ -310,7 +310,7 @@ margin:0;
           <item>
            <widget class="QStackedWidget" name="stackedWidget">
             <property name="currentIndex">
-             <number>3</number>
+             <number>1</number>
             </property>
             <widget class="QWidget" name="Home"/>
             <widget class="QWidget" name="CPU">
@@ -379,14 +379,23 @@ margin:0;
                        <enum>QFrame::Raised</enum>
                       </property>
                       <layout class="QFormLayout" name="formLayout_3">
+                       <property name="horizontalSpacing">
+                        <number>5</number>
+                       </property>
                        <property name="verticalSpacing">
-                        <number>8</number>
+                        <number>7</number>
+                       </property>
+                       <property name="leftMargin">
+                        <number>5</number>
                        </property>
                        <property name="topMargin">
-                        <number>20</number>
+                        <number>5</number>
+                       </property>
+                       <property name="rightMargin">
+                        <number>5</number>
                        </property>
                        <property name="bottomMargin">
-                        <number>21</number>
+                        <number>5</number>
                        </property>
                        <item row="0" column="0">
                         <widget class="QLabel" name="label_46">

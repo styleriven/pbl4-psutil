@@ -180,8 +180,9 @@ class Ui_MainWindow(object):
         self.frame_23.setFrameShadow(QtWidgets.QFrame.Raised)
         self.frame_23.setObjectName("frame_23")
         self.formLayout_3 = QtWidgets.QFormLayout(self.frame_23)
-        self.formLayout_3.setContentsMargins(-1, 20, -1, 21)
-        self.formLayout_3.setVerticalSpacing(8)
+        self.formLayout_3.setContentsMargins(5, 5, 5, 5)
+        self.formLayout_3.setHorizontalSpacing(5)
+        self.formLayout_3.setVerticalSpacing(7)
         self.formLayout_3.setObjectName("formLayout_3")
         self.label_46 = QtWidgets.QLabel(self.frame_23)
         self.label_46.setObjectName("label_46")
@@ -398,7 +399,7 @@ class Ui_MainWindow(object):
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
-        self.stackedWidget.setCurrentIndex(3)
+        self.stackedWidget.setCurrentIndex(1)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
