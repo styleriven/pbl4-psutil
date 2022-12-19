@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>930</width>
-    <height>655</height>
+    <width>965</width>
+    <height>665</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -137,6 +137,9 @@ margin:0;
                  <height>0</height>
                 </size>
                </property>
+               <property name="styleSheet">
+                <string notr="true">padding:0px 4px;</string>
+               </property>
                <property name="frameShape">
                 <enum>QFrame::StyledPanel</enum>
                </property>
@@ -156,7 +159,7 @@ margin:0;
                 <item>
                  <widget class="QPushButton" name="menu_btn">
                   <property name="styleSheet">
-                   <string notr="true">margin : 0px 10px;</string>
+                   <string notr="true"/>
                   </property>
                   <property name="text">
                    <string>Menu</string>
@@ -176,7 +179,7 @@ margin:0;
                 <item>
                  <widget class="QPushButton" name="home_page_btn">
                   <property name="styleSheet">
-                   <string notr="true">padding:0px 9px;
+                   <string notr="true">
 </string>
                   </property>
                   <property name="text">
@@ -197,7 +200,7 @@ margin:0;
                 <item>
                  <widget class="QPushButton" name="cpu_page_btn">
                   <property name="styleSheet">
-                   <string notr="true">padding:0px 9px;</string>
+                   <string notr="true"/>
                   </property>
                   <property name="text">
                    <string>CPU</string>
@@ -216,6 +219,9 @@ margin:0;
                 </item>
                 <item>
                  <widget class="QPushButton" name="memory_page_btn">
+                  <property name="styleSheet">
+                   <string notr="true">padding:3px;</string>
+                  </property>
                   <property name="text">
                    <string>Memory</string>
                   </property>
@@ -225,7 +231,24 @@ margin:0;
                   </property>
                   <property name="iconSize">
                    <size>
-                    <width>32</width>
+                    <width>40</width>
+                    <height>30</height>
+                   </size>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QPushButton" name="activiteles_page_btn">
+                  <property name="text">
+                   <string>Activiteles</string>
+                  </property>
+                  <property name="icon">
+                   <iconset resource="icons.qrc">
+                    <normaloff>:/icons/icon/activity.svg</normaloff>:/icons/icon/activity.svg</iconset>
+                  </property>
+                  <property name="iconSize">
+                   <size>
+                    <width>40</width>
                     <height>32</height>
                    </size>
                   </property>
@@ -234,7 +257,7 @@ margin:0;
                 <item>
                  <widget class="QPushButton" name="storage_page_btn">
                   <property name="styleSheet">
-                   <string notr="true">padding:0px 9px;</string>
+                   <string notr="true"/>
                   </property>
                   <property name="text">
                    <string>Storage</string>
@@ -242,6 +265,40 @@ margin:0;
                   <property name="icon">
                    <iconset resource="icons.qrc">
                     <normaloff>:/icons/icon/disc.svg</normaloff>:/icons/icon/disc.svg</iconset>
+                  </property>
+                  <property name="iconSize">
+                   <size>
+                    <width>40</width>
+                    <height>32</height>
+                   </size>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QPushButton" name="sensors_page_btn">
+                  <property name="text">
+                   <string>Sensors</string>
+                  </property>
+                  <property name="icon">
+                   <iconset resource="icons.qrc">
+                    <normaloff>:/icons/icon/thermometer.svg</normaloff>:/icons/icon/thermometer.svg</iconset>
+                  </property>
+                  <property name="iconSize">
+                   <size>
+                    <width>40</width>
+                    <height>32</height>
+                   </size>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QPushButton" name="networks_page_btn">
+                  <property name="text">
+                   <string>Networks</string>
+                  </property>
+                  <property name="icon">
+                   <iconset resource="icons.qrc">
+                    <normaloff>:/icons/icon/wifi.svg</normaloff>:/icons/icon/wifi.svg</iconset>
                   </property>
                   <property name="iconSize">
                    <size>
@@ -284,23 +341,140 @@ margin:0;
              <enum>QFrame::Raised</enum>
             </property>
             <layout class="QHBoxLayout" name="horizontalLayout">
+             <property name="leftMargin">
+              <number>0</number>
+             </property>
+             <property name="topMargin">
+              <number>0</number>
+             </property>
+             <property name="rightMargin">
+              <number>0</number>
+             </property>
+             <property name="bottomMargin">
+              <number>0</number>
+             </property>
              <item>
-              <widget class="QLabel" name="lblHello">
+              <widget class="QFrame" name="frame_5">
+               <property name="frameShape">
+                <enum>QFrame::StyledPanel</enum>
+               </property>
+               <property name="frameShadow">
+                <enum>QFrame::Raised</enum>
+               </property>
+               <layout class="QHBoxLayout" name="horizontalLayout_2">
+                <property name="spacing">
+                 <number>0</number>
+                </property>
+                <property name="leftMargin">
+                 <number>0</number>
+                </property>
+                <property name="topMargin">
+                 <number>0</number>
+                </property>
+                <property name="rightMargin">
+                 <number>0</number>
+                </property>
+                <property name="bottomMargin">
+                 <number>0</number>
+                </property>
+                <item>
+                 <widget class="QLabel" name="lblTime">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="text">
+                   <string>TextLabel</string>
+                  </property>
+                  <property name="textFormat">
+                   <enum>Qt::MarkdownText</enum>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+             <item>
+              <widget class="QFrame" name="frame_6">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="frameShape">
+                <enum>QFrame::StyledPanel</enum>
+               </property>
+               <property name="frameShadow">
+                <enum>QFrame::Raised</enum>
+               </property>
+               <layout class="QHBoxLayout" name="horizontalLayout_3">
+                <property name="spacing">
+                 <number>0</number>
+                </property>
+                <property name="leftMargin">
+                 <number>0</number>
+                </property>
+                <property name="topMargin">
+                 <number>0</number>
+                </property>
+                <property name="bottomMargin">
+                 <number>0</number>
+                </property>
+                <item>
+                 <widget class="QLabel" name="lblHello">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="text">
+                   <string>hello</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+             <item>
+              <spacer name="horizontalSpacer">
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>40</width>
+                 <height>20</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+             <item>
+              <widget class="QLabel" name="lblPin">
                <property name="text">
-                <string>hello</string>
+                <string/>
+               </property>
+               <property name="pixmap">
+                <pixmap resource="icons.qrc">:/icons/icon/zap.svg</pixmap>
                </property>
               </widget>
              </item>
              <item>
-              <widget class="QLabel" name="lblTime">
-               <property name="text">
-                <string>TextLabel</string>
+              <widget class="QProgressBar" name="Pin">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
                </property>
-               <property name="textFormat">
-                <enum>Qt::AutoText</enum>
-               </property>
-               <property name="alignment">
-                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+               <property name="value">
+                <number>25</number>
                </property>
               </widget>
              </item>
@@ -310,154 +484,529 @@ margin:0;
           <item>
            <widget class="QStackedWidget" name="stackedWidget">
             <property name="currentIndex">
-             <number>0</number>
+             <number>6</number>
             </property>
             <widget class="QWidget" name="Home">
-             <widget class="QFrame" name="frame_4">
-              <property name="geometry">
-               <rect>
-                <x>20</x>
-                <y>30</y>
-                <width>811</width>
-                <height>127</height>
-               </rect>
-              </property>
-              <property name="frameShape">
-               <enum>QFrame::StyledPanel</enum>
-              </property>
-              <property name="frameShadow">
-               <enum>QFrame::Raised</enum>
-              </property>
-              <layout class="QFormLayout" name="formLayout">
-               <item row="0" column="0">
-                <widget class="QLabel" name="label">
-                 <property name="text">
-                  <string>System :</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="0" column="1">
-                <widget class="QLabel" name="lblSystem">
-                 <property name="frameShadow">
-                  <enum>QFrame::Raised</enum>
-                 </property>
-                 <property name="text">
-                  <string>N/A</string>
-                 </property>
-                 <property name="textFormat">
-                  <enum>Qt::AutoText</enum>
-                 </property>
-                 <property name="alignment">
-                  <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-                 </property>
-                </widget>
-               </item>
-               <item row="1" column="0">
-                <widget class="QLabel" name="Version">
-                 <property name="text">
-                  <string>Version :</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="1" column="1">
-                <widget class="QLabel" name="lblVersion">
-                 <property name="frameShadow">
-                  <enum>QFrame::Raised</enum>
-                 </property>
-                 <property name="text">
-                  <string>N/A</string>
-                 </property>
-                 <property name="textFormat">
-                  <enum>Qt::AutoText</enum>
-                 </property>
-                 <property name="alignment">
-                  <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-                 </property>
-                </widget>
-               </item>
-               <item row="2" column="0">
-                <widget class="QLabel" name="label_12">
-                 <property name="text">
-                  <string>recently updated :</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="2" column="1">
-                <widget class="QLabel" name="lblRecentlyupdate">
-                 <property name="sizePolicy">
-                  <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                   <horstretch>0</horstretch>
-                   <verstretch>0</verstretch>
-                  </sizepolicy>
-                 </property>
-                 <property name="frameShadow">
-                  <enum>QFrame::Raised</enum>
-                 </property>
-                 <property name="text">
-                  <string>N/A</string>
-                 </property>
-                 <property name="textFormat">
-                  <enum>Qt::PlainText</enum>
-                 </property>
-                 <property name="alignment">
-                  <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-                 </property>
-                </widget>
-               </item>
-               <item row="3" column="0">
-                <widget class="QLabel" name="label_9">
-                 <property name="text">
-                  <string>Chip :</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="3" column="1">
-                <widget class="QLabel" name="lblChip">
-                 <property name="sizePolicy">
-                  <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-                   <horstretch>0</horstretch>
-                   <verstretch>0</verstretch>
-                  </sizepolicy>
-                 </property>
-                 <property name="frameShadow">
-                  <enum>QFrame::Raised</enum>
-                 </property>
-                 <property name="text">
-                  <string>N/A</string>
-                 </property>
-                 <property name="textFormat">
-                  <enum>Qt::AutoText</enum>
-                 </property>
-                 <property name="alignment">
-                  <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-                 </property>
-                </widget>
-               </item>
-               <item row="4" column="0">
-                <widget class="QLabel" name="label_10">
-                 <property name="text">
-                  <string>Dick :</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="4" column="1">
-                <widget class="QLabel" name="lblDick">
-                 <property name="frameShadow">
-                  <enum>QFrame::Raised</enum>
-                 </property>
-                 <property name="text">
-                  <string>N/A</string>
-                 </property>
-                 <property name="textFormat">
-                  <enum>Qt::AutoText</enum>
-                 </property>
-                 <property name="alignment">
-                  <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-                 </property>
-                </widget>
-               </item>
-              </layout>
-             </widget>
+             <layout class="QHBoxLayout" name="horizontalLayout_4">
+              <item>
+               <widget class="QFrame" name="frame_4">
+                <property name="frameShape">
+                 <enum>QFrame::StyledPanel</enum>
+                </property>
+                <property name="frameShadow">
+                 <enum>QFrame::Raised</enum>
+                </property>
+                <layout class="QVBoxLayout" name="verticalLayout_6">
+                 <item>
+                  <widget class="QGroupBox" name="groupBox_2">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                     <horstretch>0</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <property name="font">
+                    <font>
+                     <stylestrategy>PreferDefault</stylestrategy>
+                    </font>
+                   </property>
+                   <property name="title">
+                    <string>System</string>
+                   </property>
+                   <layout class="QHBoxLayout" name="horizontalLayout_12">
+                    <item>
+                     <widget class="QFrame" name="frame_7">
+                      <property name="frameShape">
+                       <enum>QFrame::StyledPanel</enum>
+                      </property>
+                      <property name="frameShadow">
+                       <enum>QFrame::Raised</enum>
+                      </property>
+                      <layout class="QFormLayout" name="formLayout">
+                       <property name="topMargin">
+                        <number>13</number>
+                       </property>
+                       <property name="bottomMargin">
+                        <number>9</number>
+                       </property>
+                       <item row="0" column="0">
+                        <widget class="QLabel" name="kj">
+                         <property name="text">
+                          <string>Kernel:</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item row="0" column="1">
+                        <widget class="QLabel" name="lblKernel">
+                         <property name="text">
+                          <string>TextLabel</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item row="1" column="0">
+                        <widget class="QLabel" name="kk">
+                         <property name="text">
+                          <string>Distro:</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item row="1" column="1">
+                        <widget class="QLabel" name="lblDistro">
+                         <property name="text">
+                          <string>TextLabel</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item row="2" column="0">
+                        <widget class="QLabel" name="k">
+                         <property name="text">
+                          <string>Compile:</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item row="2" column="1">
+                        <widget class="QLabel" name="lblCompile">
+                         <property name="text">
+                          <string>TextLabel</string>
+                         </property>
+                        </widget>
+                       </item>
+                      </layout>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QFrame" name="frame_8">
+                      <property name="frameShape">
+                       <enum>QFrame::StyledPanel</enum>
+                      </property>
+                      <property name="frameShadow">
+                       <enum>QFrame::Raised</enum>
+                      </property>
+                      <layout class="QFormLayout" name="formLayout_2">
+                       <property name="topMargin">
+                        <number>13</number>
+                       </property>
+                       <item row="0" column="0">
+                        <widget class="QLabel" name="j5">
+                         <property name="text">
+                          <string>Desktop:</string>
+                         </property>
+                         <property name="textFormat">
+                          <enum>Qt::MarkdownText</enum>
+                         </property>
+                        </widget>
+                       </item>
+                       <item row="0" column="1">
+                        <widget class="QLabel" name="lblDesktop">
+                         <property name="text">
+                          <string>TextLabel</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item row="1" column="0">
+                        <widget class="QLabel" name="hj">
+                         <property name="text">
+                          <string>Bits:</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item row="1" column="1">
+                        <widget class="QLabel" name="lblBits">
+                         <property name="text">
+                          <string>TextLabel</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item row="2" column="0">
+                        <widget class="QLabel" name="lblBits_2">
+                         <property name="text">
+                          <string>Version:</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item row="2" column="1">
+                        <widget class="QLabel" name="lblVsystem">
+                         <property name="text">
+                          <string>lblVsystem</string>
+                         </property>
+                        </widget>
+                       </item>
+                      </layout>
+                     </widget>
+                    </item>
+                   </layout>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QGroupBox" name="groupBox">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                     <horstretch>0</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <property name="title">
+                    <string>Machine</string>
+                   </property>
+                   <layout class="QHBoxLayout" name="horizontalLayout_15">
+                    <item>
+                     <widget class="QFrame" name="frame_9">
+                      <property name="frameShape">
+                       <enum>QFrame::StyledPanel</enum>
+                      </property>
+                      <property name="frameShadow">
+                       <enum>QFrame::Raised</enum>
+                      </property>
+                      <layout class="QFormLayout" name="formLayout_5">
+                       <property name="topMargin">
+                        <number>13</number>
+                       </property>
+                       <item row="0" column="0">
+                        <widget class="QLabel" name="label_11">
+                         <property name="text">
+                          <string>Type:</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item row="0" column="1">
+                        <widget class="QLabel" name="lblType">
+                         <property name="text">
+                          <string>TextLabel</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item row="1" column="0">
+                        <widget class="QLabel" name="label_14">
+                         <property name="text">
+                          <string>System:</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item row="1" column="1">
+                        <widget class="QLabel" name="lblSystem">
+                         <property name="lineWidth">
+                          <number>20</number>
+                         </property>
+                         <property name="text">
+                          <string>TextLabel</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item row="2" column="0">
+                        <widget class="QLabel" name="label_16">
+                         <property name="text">
+                          <string>Product:</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item row="2" column="1">
+                        <widget class="QLabel" name="lblProduct">
+                         <property name="text">
+                          <string>TextLabel</string>
+                         </property>
+                        </widget>
+                       </item>
+                      </layout>
+                     </widget>
+                    </item>
+                   </layout>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QGroupBox" name="groupBox_3">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                     <horstretch>0</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <property name="title">
+                    <string>Graphics</string>
+                   </property>
+                   <layout class="QHBoxLayout" name="horizontalLayout_16">
+                    <item>
+                     <widget class="QFrame" name="frame_10">
+                      <property name="sizePolicy">
+                       <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+                        <horstretch>0</horstretch>
+                        <verstretch>0</verstretch>
+                       </sizepolicy>
+                      </property>
+                      <property name="frameShape">
+                       <enum>QFrame::StyledPanel</enum>
+                      </property>
+                      <property name="frameShadow">
+                       <enum>QFrame::Raised</enum>
+                      </property>
+                      <layout class="QFormLayout" name="formLayout_6">
+                       <property name="topMargin">
+                        <number>13</number>
+                       </property>
+                       <item row="0" column="0">
+                        <widget class="QLabel" name="label">
+                         <property name="text">
+                          <string>Device-1:</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item row="0" column="1">
+                        <widget class="QLabel" name="lblDevice1">
+                         <property name="text">
+                          <string>TextLabel</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item row="1" column="0">
+                        <widget class="QLabel" name="label_17">
+                         <property name="text">
+                          <string>Driver:</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item row="1" column="1">
+                        <widget class="QLabel" name="lblDriverD1">
+                         <property name="text">
+                          <string>TextLabel</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item row="2" column="0">
+                        <widget class="QLabel" name="label_5">
+                         <property name="text">
+                          <string>Device-2:</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item row="2" column="1">
+                        <widget class="QLabel" name="lblDevice2">
+                         <property name="text">
+                          <string>TextLabel</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item row="3" column="0">
+                        <widget class="QLabel" name="label_18">
+                         <property name="text">
+                          <string>Driver:</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item row="3" column="1">
+                        <widget class="QLabel" name="lblDriverD2">
+                         <property name="text">
+                          <string>TextLabel</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item row="4" column="0">
+                        <widget class="QLabel" name="label_13">
+                         <property name="text">
+                          <string>Device-3:</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item row="4" column="1">
+                        <widget class="QLabel" name="lblDevice3">
+                         <property name="text">
+                          <string>TextLabel</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item row="5" column="0">
+                        <widget class="QLabel" name="label_30">
+                         <property name="text">
+                          <string>Type:</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item row="5" column="1">
+                        <widget class="QLabel" name="lblTypeD3">
+                         <property name="text">
+                          <string>TextLabel</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item row="6" column="0">
+                        <widget class="QLabel" name="label_34">
+                         <property name="text">
+                          <string>Driver:</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item row="6" column="1">
+                        <widget class="QLabel" name="lblDriverD3">
+                         <property name="text">
+                          <string>TextLabel</string>
+                         </property>
+                        </widget>
+                       </item>
+                      </layout>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QFrame" name="frame_11">
+                      <property name="frameShape">
+                       <enum>QFrame::StyledPanel</enum>
+                      </property>
+                      <property name="frameShadow">
+                       <enum>QFrame::Raised</enum>
+                      </property>
+                      <layout class="QFormLayout" name="formLayout_8">
+                       <property name="verticalSpacing">
+                        <number>9</number>
+                       </property>
+                       <property name="topMargin">
+                        <number>13</number>
+                       </property>
+                       <item row="0" column="0">
+                        <widget class="QLabel" name="label_20">
+                         <property name="text">
+                          <string>Display:</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item row="0" column="1">
+                        <widget class="QLabel" name="lblDisplay">
+                         <property name="text">
+                          <string>TextLabel</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item row="1" column="0">
+                        <widget class="QLabel" name="label_32">
+                         <property name="text">
+                          <string>With:</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item row="1" column="1">
+                        <widget class="QLabel" name="lblHomewith">
+                         <property name="text">
+                          <string>TextLabel</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item row="2" column="0">
+                        <widget class="QLabel" name="label_28">
+                         <property name="text">
+                          <string>Server:</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item row="2" column="1">
+                        <widget class="QLabel" name="lblHomeserver">
+                         <property name="text">
+                          <string>TextLabel</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item row="3" column="0">
+                        <widget class="QLabel" name="label_24">
+                         <property name="text">
+                          <string>Resolution:</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item row="3" column="1">
+                        <widget class="QLabel" name="lblResolution">
+                         <property name="text">
+                          <string>TextLabel</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item row="4" column="0">
+                        <widget class="QLabel" name="label_29">
+                         <property name="text">
+                          <string>Renderer:</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item row="4" column="1">
+                        <widget class="QLabel" name="lblRenderer">
+                         <property name="text">
+                          <string>TextLabel</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item row="5" column="0">
+                        <widget class="QLabel" name="label_22">
+                         <property name="text">
+                          <string>Direct render:</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item row="5" column="1">
+                        <widget class="QLabel" name="lblDirectrender">
+                         <property name="text">
+                          <string>TextLabel</string>
+                         </property>
+                        </widget>
+                       </item>
+                      </layout>
+                     </widget>
+                    </item>
+                   </layout>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QGroupBox" name="groupBox_4">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                     <horstretch>0</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <property name="title">
+                    <string>Temperature</string>
+                   </property>
+                   <layout class="QFormLayout" name="formLayout_7">
+                    <property name="horizontalSpacing">
+                     <number>8</number>
+                    </property>
+                    <property name="verticalSpacing">
+                     <number>7</number>
+                    </property>
+                    <property name="topMargin">
+                     <number>30</number>
+                    </property>
+                    <item row="0" column="0">
+                     <widget class="QLabel" name="label_12">
+                      <property name="text">
+                       <string>CPU:</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="0" column="1">
+                     <widget class="QLabel" name="lbltCPU">
+                      <property name="text">
+                       <string>TextLabel</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="1" column="0">
+                     <widget class="QLabel" name="label_15">
+                      <property name="text">
+                       <string>PCH:</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="1" column="1">
+                     <widget class="QLabel" name="lbltPCH">
+                      <property name="lineWidth">
+                       <number>20</number>
+                      </property>
+                      <property name="text">
+                       <string>TextLabel</string>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+             </layout>
             </widget>
             <widget class="QWidget" name="CPU">
              <layout class="QVBoxLayout" name="verticalLayout_7">
@@ -633,7 +1182,7 @@ margin:0;
                     <item>
                      <widget class="QFrame" name="frame_24">
                       <property name="sizePolicy">
-                       <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                       <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
                         <horstretch>0</horstretch>
                         <verstretch>0</verstretch>
                        </sizepolicy>
@@ -644,7 +1193,307 @@ margin:0;
                       <property name="frameShadow">
                        <enum>QFrame::Raised</enum>
                       </property>
-                      <layout class="QHBoxLayout" name="horizontalLayout_10"/>
+                      <property name="midLineWidth">
+                       <number>0</number>
+                      </property>
+                      <layout class="QHBoxLayout" name="horizontalLayout_10">
+                       <item>
+                        <widget class="QFrame" name="frame_12">
+                         <property name="frameShape">
+                          <enum>QFrame::StyledPanel</enum>
+                         </property>
+                         <property name="frameShadow">
+                          <enum>QFrame::Raised</enum>
+                         </property>
+                         <layout class="QHBoxLayout" name="horizontalLayout_17">
+                          <item>
+                           <widget class="QFrame" name="frame_14">
+                            <property name="frameShape">
+                             <enum>QFrame::StyledPanel</enum>
+                            </property>
+                            <property name="frameShadow">
+                             <enum>QFrame::Raised</enum>
+                            </property>
+                            <layout class="QFormLayout" name="formLayout_9">
+                             <item row="0" column="0">
+                              <widget class="QLabel" name="label_47">
+                               <property name="text">
+                                <string>Architecture:</string>
+                               </property>
+                              </widget>
+                             </item>
+                             <item row="0" column="1">
+                              <widget class="QLabel" name="lblCPUArchitecture">
+                               <property name="text">
+                                <string>N/A</string>
+                               </property>
+                              </widget>
+                             </item>
+                             <item row="1" column="0">
+                              <widget class="QLabel" name="label_49">
+                               <property name="text">
+                                <string>CPU op-mode(s):</string>
+                               </property>
+                              </widget>
+                             </item>
+                             <item row="1" column="1">
+                              <widget class="QLabel" name="lblCPUonmode">
+                               <property name="text">
+                                <string>N/A</string>
+                               </property>
+                              </widget>
+                             </item>
+                             <item row="2" column="0">
+                              <widget class="QLabel" name="label_65">
+                               <property name="text">
+                                <string>Byte Order:</string>
+                               </property>
+                              </widget>
+                             </item>
+                             <item row="2" column="1">
+                              <widget class="QLabel" name="lblCPUByteorder">
+                               <property name="text">
+                                <string>N/A</string>
+                               </property>
+                              </widget>
+                             </item>
+                             <item row="3" column="0">
+                              <widget class="QLabel" name="label_71">
+                               <property name="text">
+                                <string>Address sizes:</string>
+                               </property>
+                              </widget>
+                             </item>
+                             <item row="3" column="1">
+                              <widget class="QLabel" name="lblCPUAddresssize">
+                               <property name="text">
+                                <string>N/A</string>
+                               </property>
+                              </widget>
+                             </item>
+                            </layout>
+                           </widget>
+                          </item>
+                          <item>
+                           <widget class="QFrame" name="frame_15">
+                            <property name="frameShape">
+                             <enum>QFrame::StyledPanel</enum>
+                            </property>
+                            <property name="frameShadow">
+                             <enum>QFrame::Raised</enum>
+                            </property>
+                            <layout class="QFormLayout" name="formLayout_10">
+                             <item row="0" column="0">
+                              <widget class="QLabel" name="label_53">
+                               <property name="text">
+                                <string>CPU(s):</string>
+                               </property>
+                              </widget>
+                             </item>
+                             <item row="0" column="1">
+                              <widget class="QLabel" name="lblCPUs">
+                               <property name="text">
+                                <string>N/A</string>
+                               </property>
+                              </widget>
+                             </item>
+                             <item row="1" column="0">
+                              <widget class="QLabel" name="label_51">
+                               <property name="text">
+                                <string>On-line CPU(s) list:</string>
+                               </property>
+                              </widget>
+                             </item>
+                             <item row="1" column="1">
+                              <widget class="QLabel" name="lblCPUOnlineCPU">
+                               <property name="text">
+                                <string>N/A</string>
+                               </property>
+                              </widget>
+                             </item>
+                             <item row="2" column="0">
+                              <widget class="QLabel" name="label_67">
+                               <property name="text">
+                                <string>BogoMIPS:</string>
+                               </property>
+                              </widget>
+                             </item>
+                             <item row="2" column="1">
+                              <widget class="QLabel" name="lblCPUBogoMIPS">
+                               <property name="text">
+                                <string>N/A</string>
+                               </property>
+                              </widget>
+                             </item>
+                             <item row="3" column="0">
+                              <widget class="QLabel" name="label_73">
+                               <property name="text">
+                                <string>Vendor ID:</string>
+                               </property>
+                              </widget>
+                             </item>
+                             <item row="3" column="1">
+                              <widget class="QLabel" name="lblCPUVendor">
+                               <property name="text">
+                                <string>N/A</string>
+                               </property>
+                              </widget>
+                             </item>
+                            </layout>
+                           </widget>
+                          </item>
+                         </layout>
+                        </widget>
+                       </item>
+                       <item>
+                        <widget class="QFrame" name="frame_13">
+                         <property name="frameShape">
+                          <enum>QFrame::StyledPanel</enum>
+                         </property>
+                         <property name="frameShadow">
+                          <enum>QFrame::Raised</enum>
+                         </property>
+                         <layout class="QHBoxLayout" name="horizontalLayout_18">
+                          <item>
+                           <widget class="QFrame" name="frame_16">
+                            <property name="frameShape">
+                             <enum>QFrame::StyledPanel</enum>
+                            </property>
+                            <property name="frameShadow">
+                             <enum>QFrame::Raised</enum>
+                            </property>
+                            <layout class="QFormLayout" name="formLayout_11">
+                             <item row="0" column="0">
+                              <widget class="QLabel" name="label_54">
+                               <property name="text">
+                                <string>Socket(s):</string>
+                               </property>
+                              </widget>
+                             </item>
+                             <item row="0" column="1">
+                              <widget class="QLabel" name="lblCPUSoket">
+                               <property name="text">
+                                <string>N/A</string>
+                               </property>
+                              </widget>
+                             </item>
+                             <item row="1" column="0">
+                              <widget class="QLabel" name="label_55">
+                               <property name="text">
+                                <string>Stepping:</string>
+                               </property>
+                              </widget>
+                             </item>
+                             <item row="1" column="1">
+                              <widget class="QLabel" name="lblCPUStepping">
+                               <property name="text">
+                                <string>N/A</string>
+                               </property>
+                              </widget>
+                             </item>
+                             <item row="2" column="0">
+                              <widget class="QLabel" name="label_75">
+                               <property name="text">
+                                <string>CPU max MHz:</string>
+                               </property>
+                              </widget>
+                             </item>
+                             <item row="2" column="1">
+                              <widget class="QLabel" name="lblCPUmaxMHZ">
+                               <property name="text">
+                                <string>N/A</string>
+                               </property>
+                              </widget>
+                             </item>
+                             <item row="3" column="0">
+                              <widget class="QLabel" name="label_74">
+                               <property name="text">
+                                <string>CPU min MHz:</string>
+                               </property>
+                              </widget>
+                             </item>
+                             <item row="3" column="1">
+                              <widget class="QLabel" name="lblCPUminMHz">
+                               <property name="text">
+                                <string>N/A</string>
+                               </property>
+                              </widget>
+                             </item>
+                            </layout>
+                           </widget>
+                          </item>
+                          <item>
+                           <widget class="QFrame" name="frame_17">
+                            <property name="frameShape">
+                             <enum>QFrame::StyledPanel</enum>
+                            </property>
+                            <property name="frameShadow">
+                             <enum>QFrame::Raised</enum>
+                            </property>
+                            <layout class="QFormLayout" name="formLayout_12">
+                             <item row="0" column="0">
+                              <widget class="QLabel" name="label_57">
+                               <property name="text">
+                                <string>CPU family:</string>
+                               </property>
+                              </widget>
+                             </item>
+                             <item row="0" column="1">
+                              <widget class="QLabel" name="lblCPUFamily">
+                               <property name="text">
+                                <string>N/A</string>
+                               </property>
+                              </widget>
+                             </item>
+                             <item row="1" column="0">
+                              <widget class="QLabel" name="label_56">
+                               <property name="text">
+                                <string>Model:</string>
+                               </property>
+                              </widget>
+                             </item>
+                             <item row="1" column="1">
+                              <widget class="QLabel" name="lblCPUmodel">
+                               <property name="text">
+                                <string>N/A</string>
+                               </property>
+                              </widget>
+                             </item>
+                             <item row="2" column="0">
+                              <widget class="QLabel" name="label_76">
+                               <property name="text">
+                                <string>Thread(s) per core:</string>
+                               </property>
+                              </widget>
+                             </item>
+                             <item row="2" column="1">
+                              <widget class="QLabel" name="lblCPUTreadpercore">
+                               <property name="text">
+                                <string>N/A</string>
+                               </property>
+                              </widget>
+                             </item>
+                             <item row="3" column="0">
+                              <widget class="QLabel" name="label_77">
+                               <property name="text">
+                                <string>Core(s) per socket:</string>
+                               </property>
+                              </widget>
+                             </item>
+                             <item row="3" column="1">
+                              <widget class="QLabel" name="lblCPUCorepersoket">
+                               <property name="text">
+                                <string>N/A</string>
+                               </property>
+                              </widget>
+                             </item>
+                            </layout>
+                           </widget>
+                          </item>
+                         </layout>
+                        </widget>
+                       </item>
+                      </layout>
                      </widget>
                     </item>
                    </layout>
@@ -792,7 +1641,7 @@ margin:0;
                     <item>
                      <widget class="QFrame" name="frame_30">
                       <property name="sizePolicy">
-                       <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
                         <horstretch>0</horstretch>
                         <verstretch>0</verstretch>
                        </sizepolicy>
@@ -819,10 +1668,600 @@ margin:0;
                        <property name="bottomMargin">
                         <number>0</number>
                        </property>
+                       <item>
+                        <widget class="QFrame" name="frame_18">
+                         <property name="frameShape">
+                          <enum>QFrame::StyledPanel</enum>
+                         </property>
+                         <property name="frameShadow">
+                          <enum>QFrame::Raised</enum>
+                         </property>
+                         <layout class="QHBoxLayout" name="horizontalLayout_19">
+                          <item>
+                           <widget class="QGroupBox" name="groupBox_5">
+                            <property name="title">
+                             <string>Ram 1</string>
+                            </property>
+                            <layout class="QHBoxLayout" name="horizontalLayout_20">
+                             <item>
+                              <widget class="QFrame" name="frame_31">
+                               <property name="frameShape">
+                                <enum>QFrame::StyledPanel</enum>
+                               </property>
+                               <property name="frameShadow">
+                                <enum>QFrame::Raised</enum>
+                               </property>
+                               <layout class="QFormLayout" name="formLayout_15">
+                                <property name="horizontalSpacing">
+                                 <number>7</number>
+                                </property>
+                                <property name="verticalSpacing">
+                                 <number>7</number>
+                                </property>
+                                <property name="topMargin">
+                                 <number>12</number>
+                                </property>
+                                <property name="rightMargin">
+                                 <number>10</number>
+                                </property>
+                                <item row="0" column="0">
+                                 <widget class="QLabel" name="label_62">
+                                  <property name="text">
+                                   <string>Total Width:</string>
+                                  </property>
+                                 </widget>
+                                </item>
+                                <item row="0" column="1">
+                                 <widget class="QLabel" name="lblRam1Total">
+                                  <property name="text">
+                                   <string>N/A</string>
+                                  </property>
+                                 </widget>
+                                </item>
+                                <item row="1" column="0">
+                                 <widget class="QLabel" name="label_63">
+                                  <property name="text">
+                                   <string>Data Width:</string>
+                                  </property>
+                                 </widget>
+                                </item>
+                                <item row="1" column="1">
+                                 <widget class="QLabel" name="lblRam1Data">
+                                  <property name="text">
+                                   <string>N/A</string>
+                                  </property>
+                                 </widget>
+                                </item>
+                                <item row="2" column="0">
+                                 <widget class="QLabel" name="hjk">
+                                  <property name="text">
+                                   <string>Size:</string>
+                                  </property>
+                                 </widget>
+                                </item>
+                                <item row="2" column="1">
+                                 <widget class="QLabel" name="lblRam1Size">
+                                  <property name="text">
+                                   <string>N/A</string>
+                                  </property>
+                                 </widget>
+                                </item>
+                                <item row="3" column="0">
+                                 <widget class="QLabel" name="jkjk">
+                                  <property name="text">
+                                   <string>Form Factor:</string>
+                                  </property>
+                                 </widget>
+                                </item>
+                                <item row="3" column="1">
+                                 <widget class="QLabel" name="lblRam1Form">
+                                  <property name="text">
+                                   <string>N/A</string>
+                                  </property>
+                                 </widget>
+                                </item>
+                               </layout>
+                              </widget>
+                             </item>
+                             <item>
+                              <widget class="QFrame" name="frame_32">
+                               <property name="frameShape">
+                                <enum>QFrame::StyledPanel</enum>
+                               </property>
+                               <property name="frameShadow">
+                                <enum>QFrame::Raised</enum>
+                               </property>
+                               <layout class="QFormLayout" name="formLayout_16">
+                                <property name="horizontalSpacing">
+                                 <number>7</number>
+                                </property>
+                                <property name="verticalSpacing">
+                                 <number>7</number>
+                                </property>
+                                <property name="topMargin">
+                                 <number>12</number>
+                                </property>
+                                <property name="rightMargin">
+                                 <number>10</number>
+                                </property>
+                                <item row="0" column="0">
+                                 <widget class="QLabel" name="gh">
+                                  <property name="text">
+                                   <string>Locator:</string>
+                                  </property>
+                                 </widget>
+                                </item>
+                                <item row="0" column="1">
+                                 <widget class="QLabel" name="lblRam1Locator">
+                                  <property name="text">
+                                   <string>N/A</string>
+                                  </property>
+                                 </widget>
+                                </item>
+                                <item row="1" column="0">
+                                 <widget class="QLabel" name="label_85">
+                                  <property name="text">
+                                   <string>Type:</string>
+                                  </property>
+                                 </widget>
+                                </item>
+                                <item row="1" column="1">
+                                 <widget class="QLabel" name="lblRam1Type">
+                                  <property name="text">
+                                   <string>N/A</string>
+                                  </property>
+                                 </widget>
+                                </item>
+                                <item row="2" column="0">
+                                 <widget class="QLabel" name="label_86">
+                                  <property name="text">
+                                   <string>Type Detail:</string>
+                                  </property>
+                                 </widget>
+                                </item>
+                                <item row="2" column="1">
+                                 <widget class="QLabel" name="lblRam1TypeDetail">
+                                  <property name="text">
+                                   <string>N/A</string>
+                                  </property>
+                                 </widget>
+                                </item>
+                                <item row="3" column="0">
+                                 <widget class="QLabel" name="label_87">
+                                  <property name="text">
+                                   <string>Speed:</string>
+                                  </property>
+                                 </widget>
+                                </item>
+                                <item row="3" column="1">
+                                 <widget class="QLabel" name="lblRam1Speed">
+                                  <property name="text">
+                                   <string>N/A</string>
+                                  </property>
+                                 </widget>
+                                </item>
+                               </layout>
+                              </widget>
+                             </item>
+                            </layout>
+                           </widget>
+                          </item>
+                          <item>
+                           <widget class="QGroupBox" name="groupBox_6">
+                            <property name="title">
+                             <string>Ram 2</string>
+                            </property>
+                            <layout class="QHBoxLayout" name="horizontalLayout_21">
+                             <item>
+                              <widget class="QFrame" name="frame_33">
+                               <property name="frameShape">
+                                <enum>QFrame::StyledPanel</enum>
+                               </property>
+                               <property name="frameShadow">
+                                <enum>QFrame::Raised</enum>
+                               </property>
+                               <layout class="QFormLayout" name="formLayout_17">
+                                <property name="horizontalSpacing">
+                                 <number>7</number>
+                                </property>
+                                <property name="verticalSpacing">
+                                 <number>7</number>
+                                </property>
+                                <property name="leftMargin">
+                                 <number>10</number>
+                                </property>
+                                <property name="topMargin">
+                                 <number>12</number>
+                                </property>
+                                <item row="0" column="0">
+                                 <widget class="QLabel" name="label_88">
+                                  <property name="text">
+                                   <string>Total Width:</string>
+                                  </property>
+                                 </widget>
+                                </item>
+                                <item row="0" column="1">
+                                 <widget class="QLabel" name="lblRam2Total">
+                                  <property name="text">
+                                   <string>N/A</string>
+                                  </property>
+                                 </widget>
+                                </item>
+                                <item row="1" column="0">
+                                 <widget class="QLabel" name="label_89">
+                                  <property name="text">
+                                   <string>Data Width:</string>
+                                  </property>
+                                 </widget>
+                                </item>
+                                <item row="1" column="1">
+                                 <widget class="QLabel" name="lblRam2Data">
+                                  <property name="text">
+                                   <string>N/A</string>
+                                  </property>
+                                 </widget>
+                                </item>
+                                <item row="2" column="0">
+                                 <widget class="QLabel" name="label_90">
+                                  <property name="text">
+                                   <string>Size:</string>
+                                  </property>
+                                 </widget>
+                                </item>
+                                <item row="2" column="1">
+                                 <widget class="QLabel" name="lblRam2Size">
+                                  <property name="text">
+                                   <string>N/A</string>
+                                  </property>
+                                 </widget>
+                                </item>
+                                <item row="3" column="0">
+                                 <widget class="QLabel" name="label_91">
+                                  <property name="text">
+                                   <string>Form Factor:</string>
+                                  </property>
+                                 </widget>
+                                </item>
+                                <item row="3" column="1">
+                                 <widget class="QLabel" name="lblRam2Form">
+                                  <property name="text">
+                                   <string>N/A</string>
+                                  </property>
+                                 </widget>
+                                </item>
+                               </layout>
+                              </widget>
+                             </item>
+                             <item>
+                              <widget class="QFrame" name="frame_34">
+                               <property name="frameShape">
+                                <enum>QFrame::StyledPanel</enum>
+                               </property>
+                               <property name="frameShadow">
+                                <enum>QFrame::Raised</enum>
+                               </property>
+                               <layout class="QFormLayout" name="formLayout_18">
+                                <property name="horizontalSpacing">
+                                 <number>7</number>
+                                </property>
+                                <property name="verticalSpacing">
+                                 <number>7</number>
+                                </property>
+                                <property name="leftMargin">
+                                 <number>10</number>
+                                </property>
+                                <property name="topMargin">
+                                 <number>12</number>
+                                </property>
+                                <item row="0" column="0">
+                                 <widget class="QLabel" name="label_92">
+                                  <property name="text">
+                                   <string>Locator:</string>
+                                  </property>
+                                 </widget>
+                                </item>
+                                <item row="0" column="1">
+                                 <widget class="QLabel" name="lblRam2Locator">
+                                  <property name="text">
+                                   <string>N/A</string>
+                                  </property>
+                                 </widget>
+                                </item>
+                                <item row="1" column="0">
+                                 <widget class="QLabel" name="label_93">
+                                  <property name="text">
+                                   <string>Type:</string>
+                                  </property>
+                                 </widget>
+                                </item>
+                                <item row="1" column="1">
+                                 <widget class="QLabel" name="lblRam2Type">
+                                  <property name="text">
+                                   <string>N/A</string>
+                                  </property>
+                                 </widget>
+                                </item>
+                                <item row="2" column="0">
+                                 <widget class="QLabel" name="label_94">
+                                  <property name="text">
+                                   <string>Type Detail:</string>
+                                  </property>
+                                 </widget>
+                                </item>
+                                <item row="2" column="1">
+                                 <widget class="QLabel" name="lblRam2TypeDetail">
+                                  <property name="text">
+                                   <string>N/A</string>
+                                  </property>
+                                 </widget>
+                                </item>
+                                <item row="3" column="0">
+                                 <widget class="QLabel" name="label_95">
+                                  <property name="text">
+                                   <string>Speed:</string>
+                                  </property>
+                                 </widget>
+                                </item>
+                                <item row="3" column="1">
+                                 <widget class="QLabel" name="lblRam2Speed">
+                                  <property name="text">
+                                   <string>N/A</string>
+                                  </property>
+                                 </widget>
+                                </item>
+                               </layout>
+                              </widget>
+                             </item>
+                            </layout>
+                           </widget>
+                          </item>
+                         </layout>
+                        </widget>
+                       </item>
                       </layout>
                      </widget>
                     </item>
                    </layout>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+            <widget class="QWidget" name="Activiteles">
+             <layout class="QVBoxLayout" name="verticalLayout_16">
+              <item alignment="Qt::AlignTop">
+               <widget class="QFrame" name="frame_37">
+                <property name="frameShape">
+                 <enum>QFrame::StyledPanel</enum>
+                </property>
+                <property name="frameShadow">
+                 <enum>QFrame::Raised</enum>
+                </property>
+                <layout class="QHBoxLayout" name="horizontalLayout_23">
+                 <property name="spacing">
+                  <number>0</number>
+                 </property>
+                 <property name="leftMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="topMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="rightMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="bottomMargin">
+                  <number>0</number>
+                 </property>
+                 <item alignment="Qt::AlignLeft">
+                  <widget class="QFrame" name="frame_40">
+                   <property name="frameShape">
+                    <enum>QFrame::StyledPanel</enum>
+                   </property>
+                   <property name="frameShadow">
+                    <enum>QFrame::Raised</enum>
+                   </property>
+                   <layout class="QHBoxLayout" name="horizontalLayout_25">
+                    <property name="spacing">
+                     <number>0</number>
+                    </property>
+                    <property name="leftMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="topMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="rightMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="bottomMargin">
+                     <number>0</number>
+                    </property>
+                    <item alignment="Qt::AlignLeft">
+                     <widget class="QLabel" name="label_9">
+                      <property name="font">
+                       <font>
+                        <pointsize>15</pointsize>
+                        <weight>75</weight>
+                        <bold>true</bold>
+                       </font>
+                      </property>
+                      <property name="text">
+                       <string>Activities</string>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </widget>
+                 </item>
+                 <item alignment="Qt::AlignRight">
+                  <widget class="QFrame" name="frame_41">
+                   <property name="frameShape">
+                    <enum>QFrame::StyledPanel</enum>
+                   </property>
+                   <property name="frameShadow">
+                    <enum>QFrame::Raised</enum>
+                   </property>
+                   <layout class="QHBoxLayout" name="horizontalLayout_24">
+                    <property name="spacing">
+                     <number>0</number>
+                    </property>
+                    <property name="leftMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="topMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="rightMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="bottomMargin">
+                     <number>0</number>
+                    </property>
+                    <item>
+                     <widget class="QLineEdit" name="activity_search">
+                      <property name="placeholderText">
+                       <string>Search Processes</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QPushButton" name="pushButton">
+                      <property name="text">
+                       <string/>
+                      </property>
+                      <property name="icon">
+                       <iconset resource="icons.qrc">
+                        <normaloff>:/icons/icon/search.svg</normaloff>:/icons/icon/search.svg</iconset>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+              <item>
+               <widget class="QFrame" name="frame_38">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="frameShape">
+                 <enum>QFrame::StyledPanel</enum>
+                </property>
+                <property name="frameShadow">
+                 <enum>QFrame::Raised</enum>
+                </property>
+                <layout class="QVBoxLayout" name="verticalLayout_17">
+                 <item>
+                  <widget class="QTableWidget" name="twActivititese">
+                   <attribute name="horizontalHeaderDefaultSectionSize">
+                    <number>120</number>
+                   </attribute>
+                   <column>
+                    <property name="text">
+                     <string>ProCess ID</string>
+                    </property>
+                   </column>
+                   <column>
+                    <property name="text">
+                     <string>ProCess Name</string>
+                    </property>
+                   </column>
+                   <column>
+                    <property name="text">
+                     <string>ProCess Status</string>
+                    </property>
+                   </column>
+                   <column>
+                    <property name="text">
+                     <string>Started</string>
+                    </property>
+                   </column>
+                   <column>
+                    <property name="text">
+                     <string>Suspend</string>
+                    </property>
+                   </column>
+                   <column>
+                    <property name="text">
+                     <string>Resume</string>
+                    </property>
+                   </column>
+                   <column>
+                    <property name="text">
+                     <string>Terminate</string>
+                    </property>
+                   </column>
+                   <column>
+                    <property name="text">
+                     <string>Kill</string>
+                    </property>
+                   </column>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+              <item alignment="Qt::AlignBottom">
+               <widget class="QFrame" name="frame_39">
+                <property name="styleSheet">
+                 <string notr="true">text-align: center;</string>
+                </property>
+                <property name="frameShape">
+                 <enum>QFrame::StyledPanel</enum>
+                </property>
+                <property name="frameShadow">
+                 <enum>QFrame::Raised</enum>
+                </property>
+                <layout class="QHBoxLayout" name="horizontalLayout_26">
+                 <property name="spacing">
+                  <number>0</number>
+                 </property>
+                 <property name="leftMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="topMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="rightMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="bottomMargin">
+                  <number>0</number>
+                 </property>
+                 <item>
+                  <widget class="QPushButton" name="pushButton_2">
+                   <property name="text">
+                    <string>Suspend</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QPushButton" name="pushButton_3">
+                   <property name="text">
+                    <string>Resume</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QPushButton" name="pushButton_4">
+                   <property name="text">
+                    <string>Terminate</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QPushButton" name="pushButton_5">
+                   <property name="text">
+                    <string>Kill</string>
+                   </property>
                   </widget>
                  </item>
                 </layout>
@@ -863,6 +2302,12 @@ margin:0;
               </item>
               <item>
                <widget class="QTableWidget" name="storageTable">
+                <property name="editTriggers">
+                 <set>QAbstractItemView::NoEditTriggers</set>
+                </property>
+                <property name="textElideMode">
+                 <enum>Qt::ElideRight</enum>
+                </property>
                 <column>
                  <property name="text">
                   <string>Device</string>
@@ -917,6 +2362,463 @@ margin:0;
               </item>
              </layout>
             </widget>
+            <widget class="QWidget" name="Sensor">
+             <layout class="QVBoxLayout" name="verticalLayout_18">
+              <item>
+               <widget class="QFrame" name="frame_42">
+                <property name="frameShape">
+                 <enum>QFrame::StyledPanel</enum>
+                </property>
+                <property name="frameShadow">
+                 <enum>QFrame::Raised</enum>
+                </property>
+                <layout class="QVBoxLayout" name="verticalLayout_19">
+                 <item>
+                  <widget class="QLabel" name="label_10">
+                   <property name="font">
+                    <font>
+                     <pointsize>15</pointsize>
+                     <weight>75</weight>
+                     <bold>true</bold>
+                    </font>
+                   </property>
+                   <property name="text">
+                    <string>SenSor</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QTableWidget" name="twSensor">
+                   <column>
+                    <property name="text">
+                     <string>Sennor</string>
+                    </property>
+                   </column>
+                   <column>
+                    <property name="text">
+                     <string>Label</string>
+                    </property>
+                   </column>
+                   <column>
+                    <property name="text">
+                     <string>Current</string>
+                    </property>
+                   </column>
+                   <column>
+                    <property name="text">
+                     <string>High</string>
+                    </property>
+                   </column>
+                   <column>
+                    <property name="text">
+                     <string>Critical</string>
+                    </property>
+                   </column>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+            <widget class="QWidget" name="Networks">
+             <layout class="QHBoxLayout" name="horizontalLayout_22">
+              <item>
+               <widget class="QScrollArea" name="scrollArea">
+                <property name="widgetResizable">
+                 <bool>true</bool>
+                </property>
+                <widget class="QWidget" name="scrollAreaWidgetContents">
+                 <property name="geometry">
+                  <rect>
+                   <x>0</x>
+                   <y>0</y>
+                   <width>874</width>
+                   <height>772</height>
+                  </rect>
+                 </property>
+                 <layout class="QVBoxLayout" name="verticalLayout_11">
+                  <property name="spacing">
+                   <number>0</number>
+                  </property>
+                  <property name="leftMargin">
+                   <number>0</number>
+                  </property>
+                  <property name="topMargin">
+                   <number>0</number>
+                  </property>
+                  <property name="rightMargin">
+                   <number>0</number>
+                  </property>
+                  <property name="bottomMargin">
+                   <number>0</number>
+                  </property>
+                  <item>
+                   <widget class="QFrame" name="frame_19">
+                    <property name="frameShape">
+                     <enum>QFrame::StyledPanel</enum>
+                    </property>
+                    <property name="frameShadow">
+                     <enum>QFrame::Raised</enum>
+                    </property>
+                    <layout class="QVBoxLayout" name="verticalLayout_12">
+                     <item>
+                      <widget class="QLabel" name="label_2">
+                       <property name="font">
+                        <font>
+                         <pointsize>12</pointsize>
+                         <weight>75</weight>
+                         <bold>true</bold>
+                        </font>
+                       </property>
+                       <property name="text">
+                        <string>Status</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QTableWidget" name="twStatus">
+                       <property name="minimumSize">
+                        <size>
+                         <width>0</width>
+                         <height>150</height>
+                        </size>
+                       </property>
+                       <property name="layoutDirection">
+                        <enum>Qt::LeftToRight</enum>
+                       </property>
+                       <property name="autoFillBackground">
+                        <bool>true</bool>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true"/>
+                       </property>
+                       <property name="editTriggers">
+                        <set>QAbstractItemView::NoEditTriggers</set>
+                       </property>
+                       <property name="sortingEnabled">
+                        <bool>false</bool>
+                       </property>
+                       <attribute name="horizontalHeaderCascadingSectionResizes">
+                        <bool>true</bool>
+                       </attribute>
+                       <attribute name="horizontalHeaderMinimumSectionSize">
+                        <number>56</number>
+                       </attribute>
+                       <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
+                        <bool>false</bool>
+                       </attribute>
+                       <attribute name="horizontalHeaderStretchLastSection">
+                        <bool>false</bool>
+                       </attribute>
+                       <attribute name="verticalHeaderCascadingSectionResizes">
+                        <bool>false</bool>
+                       </attribute>
+                       <attribute name="verticalHeaderShowSortIndicator" stdset="0">
+                        <bool>false</bool>
+                       </attribute>
+                       <attribute name="verticalHeaderStretchLastSection">
+                        <bool>false</bool>
+                       </attribute>
+                       <column>
+                        <property name="text">
+                         <string>ISUP</string>
+                        </property>
+                       </column>
+                       <column>
+                        <property name="text">
+                         <string>Duplex</string>
+                        </property>
+                       </column>
+                       <column>
+                        <property name="text">
+                         <string>Speed</string>
+                        </property>
+                       </column>
+                       <column>
+                        <property name="text">
+                         <string>MTU</string>
+                        </property>
+                       </column>
+                      </widget>
+                     </item>
+                    </layout>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QFrame" name="frame_20">
+                    <property name="frameShape">
+                     <enum>QFrame::StyledPanel</enum>
+                    </property>
+                    <property name="frameShadow">
+                     <enum>QFrame::Raised</enum>
+                    </property>
+                    <layout class="QVBoxLayout" name="verticalLayout_13">
+                     <item>
+                      <widget class="QLabel" name="label_6">
+                       <property name="font">
+                        <font>
+                         <pointsize>12</pointsize>
+                         <weight>75</weight>
+                         <bold>true</bold>
+                        </font>
+                       </property>
+                       <property name="text">
+                        <string>Network IO Counters</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QTableWidget" name="twCounters">
+                       <property name="minimumSize">
+                        <size>
+                         <width>0</width>
+                         <height>150</height>
+                        </size>
+                       </property>
+                       <property name="frameShadow">
+                        <enum>QFrame::Raised</enum>
+                       </property>
+                       <property name="lineWidth">
+                        <number>1</number>
+                       </property>
+                       <property name="autoScroll">
+                        <bool>true</bool>
+                       </property>
+                       <property name="autoScrollMargin">
+                        <number>10</number>
+                       </property>
+                       <property name="editTriggers">
+                        <set>QAbstractItemView::NoEditTriggers</set>
+                       </property>
+                       <property name="selectionMode">
+                        <enum>QAbstractItemView::ContiguousSelection</enum>
+                       </property>
+                       <property name="selectionBehavior">
+                        <enum>QAbstractItemView::SelectItems</enum>
+                       </property>
+                       <property name="iconSize">
+                        <size>
+                         <width>0</width>
+                         <height>0</height>
+                        </size>
+                       </property>
+                       <property name="gridStyle">
+                        <enum>Qt::SolidLine</enum>
+                       </property>
+                       <property name="columnCount">
+                        <number>9</number>
+                       </property>
+                       <attribute name="horizontalHeaderDefaultSectionSize">
+                        <number>129</number>
+                       </attribute>
+                       <attribute name="horizontalHeaderStretchLastSection">
+                        <bool>false</bool>
+                       </attribute>
+                       <column>
+                        <property name="text">
+                         <string>IO</string>
+                        </property>
+                        <property name="font">
+                         <font>
+                          <pointsize>11</pointsize>
+                         </font>
+                        </property>
+                       </column>
+                       <column>
+                        <property name="text">
+                         <string>Bytes Sent</string>
+                        </property>
+                       </column>
+                       <column>
+                        <property name="text">
+                         <string>Bytes Received</string>
+                        </property>
+                       </column>
+                       <column>
+                        <property name="text">
+                         <string>Packets Sent</string>
+                        </property>
+                       </column>
+                       <column>
+                        <property name="text">
+                         <string>Packets Received</string>
+                        </property>
+                        <property name="font">
+                         <font>
+                          <pointsize>11</pointsize>
+                         </font>
+                        </property>
+                       </column>
+                       <column>
+                        <property name="text">
+                         <string>ERR In</string>
+                        </property>
+                       </column>
+                       <column>
+                        <property name="text">
+                         <string>ERR Out</string>
+                        </property>
+                       </column>
+                       <column>
+                        <property name="text">
+                         <string>Drop In</string>
+                        </property>
+                       </column>
+                       <column>
+                        <property name="text">
+                         <string>Drop Out</string>
+                        </property>
+                       </column>
+                      </widget>
+                     </item>
+                    </layout>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QFrame" name="frame_35">
+                    <property name="frameShape">
+                     <enum>QFrame::StyledPanel</enum>
+                    </property>
+                    <property name="frameShadow">
+                     <enum>QFrame::Raised</enum>
+                    </property>
+                    <layout class="QVBoxLayout" name="verticalLayout_14">
+                     <item>
+                      <widget class="QLabel" name="label_7">
+                       <property name="font">
+                        <font>
+                         <pointsize>12</pointsize>
+                         <weight>75</weight>
+                         <bold>true</bold>
+                        </font>
+                       </property>
+                       <property name="text">
+                        <string>Network Addresses</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QTableWidget" name="twAddresses">
+                       <property name="minimumSize">
+                        <size>
+                         <width>0</width>
+                         <height>150</height>
+                        </size>
+                       </property>
+                       <property name="editTriggers">
+                        <set>QAbstractItemView::NoEditTriggers</set>
+                       </property>
+                       <column>
+                        <property name="text">
+                         <string> </string>
+                        </property>
+                       </column>
+                       <column>
+                        <property name="text">
+                         <string>Family</string>
+                        </property>
+                       </column>
+                       <column>
+                        <property name="text">
+                         <string>Address</string>
+                        </property>
+                       </column>
+                       <column>
+                        <property name="text">
+                         <string>Netmask</string>
+                        </property>
+                       </column>
+                       <column>
+                        <property name="text">
+                         <string>Roadcas</string>
+                        </property>
+                       </column>
+                       <column>
+                        <property name="text">
+                         <string>Ptp</string>
+                        </property>
+                       </column>
+                      </widget>
+                     </item>
+                    </layout>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QFrame" name="frame_36">
+                    <property name="frameShape">
+                     <enum>QFrame::StyledPanel</enum>
+                    </property>
+                    <property name="frameShadow">
+                     <enum>QFrame::Raised</enum>
+                    </property>
+                    <layout class="QVBoxLayout" name="verticalLayout_15">
+                     <item>
+                      <widget class="QLabel" name="hgh">
+                       <property name="font">
+                        <font>
+                         <pointsize>12</pointsize>
+                         <weight>75</weight>
+                         <bold>true</bold>
+                        </font>
+                       </property>
+                       <property name="text">
+                        <string>Network Connections</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QTableWidget" name="twConnections">
+                       <property name="minimumSize">
+                        <size>
+                         <width>0</width>
+                         <height>150</height>
+                        </size>
+                       </property>
+                       <property name="editTriggers">
+                        <set>QAbstractItemView::NoEditTriggers</set>
+                       </property>
+                       <column>
+                        <property name="text">
+                         <string>FD</string>
+                        </property>
+                       </column>
+                       <column>
+                        <property name="text">
+                         <string>Family</string>
+                        </property>
+                       </column>
+                       <column>
+                        <property name="text">
+                         <string>Laddr</string>
+                        </property>
+                       </column>
+                       <column>
+                        <property name="text">
+                         <string>Raddr</string>
+                        </property>
+                       </column>
+                       <column>
+                        <property name="text">
+                         <string>Status</string>
+                        </property>
+                       </column>
+                       <column>
+                        <property name="text">
+                         <string>PiD</string>
+                        </property>
+                       </column>
+                      </widget>
+                     </item>
+                    </layout>
+                   </widget>
+                  </item>
+                 </layout>
+                </widget>
+               </widget>
+              </item>
+             </layout>
+            </widget>
            </widget>
           </item>
          </layout>
@@ -925,7 +2827,7 @@ margin:0;
       </layout>
      </widget>
     </item>
-    <item alignment="Qt::AlignBottom">
+    <item>
      <widget class="QFrame" name="footer_frame">
       <property name="frameShape">
        <enum>QFrame::NoFrame</enum>
