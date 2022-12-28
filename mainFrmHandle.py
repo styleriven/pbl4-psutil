@@ -82,7 +82,6 @@ class MAINFRMHANDLE(QMainWindow):
         
         self.ui.menu_btn.clicked.connect(lambda:self.slideLeftMenu())
         
-        
         self.interval=1000
         
         self.timer = QtCore.QTimer()
@@ -96,6 +95,8 @@ class MAINFRMHANDLE(QMainWindow):
         self.timer.timeout.connect(self.update_Ram)
         self.timer.timeout.connect(self.Pin)
         self.timer.timeout.connect(self.Temperature)
+        self.timer.timeout.connect(self.sensors)
+        # self.timer.timeout.connect(self.network)
         self.timer.start()
         self.ui.stackedWidget.setCurrentWidget(self.ui.Home)
         self.system()
@@ -106,14 +107,15 @@ class MAINFRMHANDLE(QMainWindow):
         self.lsCPU()
         self.lsRam()
         self.processes()
-        self.sensors()
         self.network()
         time.sleep(1)
         
         for w in self.ui.menu_frame.findChildren(QPushButton):
             w.clicked.connect(self.applyButtonStyle)
-        
         self.show()
+    
+    
+    # thong tin network 
     
     def network(self):
         for x in psutil.net_if_stats():
@@ -160,10 +162,8 @@ class MAINFRMHANDLE(QMainWindow):
                 
         for x in psutil.net_connections():
             z = psutil.net_connections()
-            
             rowPosition = self.ui.twConnections.rowCount()
             self.ui.twConnections.insertRow(rowPosition)
-            
             self.create_table_widget(rowPosition,0, str(x.fd),"twConnections")
             self.create_table_widget(rowPosition,1, str(x.family),"twConnections")
             self.create_table_widget(rowPosition,2, str(x.type),"twConnections")
@@ -175,14 +175,14 @@ class MAINFRMHANDLE(QMainWindow):
                 
 
 
-
+    # thong tin sensorsS
     def sensors(self):
-        
+        self.ui.twSensor.clear()
+        self.ui.twSensor.setRowCount(0)
         for x in psutil.sensors_temperatures():
             for y in psutil.sensors_temperatures()[x]:
                 rowPosition = self.ui.twSensor.rowCount()
                 self.ui.twSensor.insertRow(rowPosition)
-                
                 self.create_table_widget(rowPosition,0, x,"twSensor")
                 self.create_table_widget(rowPosition,1, y.label,"twSensor")
                 self.create_table_widget(rowPosition,2, str(y.current),"twSensor")
@@ -197,6 +197,8 @@ class MAINFRMHANDLE(QMainWindow):
             item = self.ui.twActivititese.item(row, 1)
             self.ui.twActivititese.setRowHidden(row, name not in item.text().lower())
     
+    # thong tin cac processes
+    
     def processes(self):
         for x in psutil.pids():
             rowPosition = self.ui.twActivititese.rowCount()
@@ -209,27 +211,6 @@ class MAINFRMHANDLE(QMainWindow):
                 self.create_table_widget(rowPosition, 1 ,str(process.name()),"twActivititese")
                 self.create_table_widget(rowPosition, 2 ,str(process.status()),"twActivititese")
                 self.create_table_widget(rowPosition, 3 ,str(datetime.utcfromtimestamp(process.create_time()).strftime('%d/%m/%Y %H:%M:%S')),"twActivititese")
-                
-                suspend_btn = QPushButton(self.ui.twActivititese)
-                suspend_btn.setText("Suspend")
-                suspend_btn.setStyleSheet("color: brown")
-                self.ui.twActivititese.setCellWidget(rowPosition,4,suspend_btn)
-                
-                resume_btn = QPushButton(self.ui.twActivititese)
-                resume_btn.setText("Resume")
-                resume_btn.setStyleSheet("color: green")
-                self.ui.twActivititese.setCellWidget(rowPosition,5,resume_btn)
-                
-                terminate_btn = QPushButton(self.ui.twActivititese)
-                terminate_btn.setText("Terminate")
-                terminate_btn.setStyleSheet("color: brown")
-                self.ui.twActivititese.setCellWidget(rowPosition,6,terminate_btn)
-                
-                kill_btn = QPushButton(self.ui.twActivititese)
-                kill_btn.setText("Kill")
-                kill_btn.setStyleSheet("color: brown")
-                self.ui.twActivititese.setCellWidget(rowPosition,7,kill_btn)
-                
                 
             except Exception as e:
                 print (e)
@@ -246,54 +227,64 @@ class MAINFRMHANDLE(QMainWindow):
             self.sender().setStyleSheet("border-bottom: 2px solid;")
         return
     def grapphics(self):
-        gra1 = self.info[18].split(" ")
-        gra2 = self.info[20].split(" ")
-        gra3 = self.info[22].split(" ")
-        gra4 = self.info[24].split(" ")
-        gra5 = self.info[25].split(" ")
-        gra6 = self.info[26].split(" ")
-        gra7 = self.info[27].split(" ")
-        
-        self.ui.lblDevice1.setText(gra1[3]+" "+gra1[4]+" "+gra1[5])
-        self.ui.lblDriverD1.setText(gra1[11])
-        self.ui.lblDevice2.setText(gra2[3]+" "+gra2[4])
-        self.ui.lblDriverD2.setText(gra1[9])
-        self.ui.lblDevice3.setText(gra3[3]+" "+gra3[4])
-        self.ui.lblTypeD3.setText(gra3[6])
-        self.ui.lblDriverD3.setText(gra3[8])
-        
-        self.ui.lblDisplay.setText(gra4[3])
-        self.ui.lblHomeserver.setText(gra4[5])
-        self.ui.lblHomewith.setText(gra4[9])
-        self.ui.lblResolution.setText(gra5[10])
-        self.ui.lblRenderer.setText(gra6[4]+" "+gra6[5]+" "+gra6[6]+" "+gra6[7])
-        self.ui.lblDirectrender.setText(gra7[6])
+        try:
+            gra1 = self.info[18].split(" ")
+            gra2 = self.info[20].split(" ")
+            gra3 = self.info[22].split(" ")
+            gra4 = self.info[24].split(" ")
+            gra5 = self.info[25].split(" ")
+            gra6 = self.info[26].split(" ")
+            gra7 = self.info[27].split(" ")
+            
+            self.ui.lblDevice1.setText(gra1[3]+" "+gra1[4]+" "+gra1[5])
+            self.ui.lblDriverD1.setText(gra1[11])
+            self.ui.lblDevice2.setText(gra2[3]+" "+gra2[4])
+            self.ui.lblDriverD2.setText(gra1[9])
+            self.ui.lblDevice3.setText(gra3[3]+" "+gra3[4])
+            self.ui.lblTypeD3.setText(gra3[6])
+            self.ui.lblDriverD3.setText(gra3[8])
+            
+            self.ui.lblDisplay.setText(gra4[3])
+            self.ui.lblHomeserver.setText(gra4[5])
+            self.ui.lblHomewith.setText(gra4[9])
+            self.ui.lblResolution.setText(gra5[10])
+            self.ui.lblRenderer.setText(gra6[4]+" "+gra6[5]+" "+gra6[6]+" "+gra6[7])
+            self.ui.lblDirectrender.setText(gra7[6])
+        except Exception as e:
+            print (e)
+            
         
         
         
                 
     def machine(self):
-        ma = self.info[4].split(" ")
-        self.ui.lblType.setText(ma[3])
-        self.ui.lblSystem.setText(ma[5])
-        self.ui.lblProduct.setText(ma[7]+" "+ma[8])
+        try:
+            ma = self.info[4].split(" ")
+            self.ui.lblType.setText(ma[3])
+            self.ui.lblSystem.setText(ma[5])
+            self.ui.lblProduct.setText(ma[7]+" "+ma[8])
+        except Exception as e:
+            print (e)
         
     def system(self):
-        sys1 = self.info[1].split(" ")
-        sys2 = self.info[2].split(" ")
-        self.ui.lblKernel.setText(sys1[3] +" "+sys1[4]) 
-        self.ui.lblBits.setText(sys1[6])
-        self.ui.lblCompile.setText(sys1[8])
-        self.ui.lblVsystem.setText(sys1[10])
-        self.ui.lblDesktop.setText(sys2[5])
-        self.ui.lblDistro.setText(sys2[7]+" "+sys2[8]+" "+sys2[9])
+        try:
+            sys1 = self.info[1].split(" ")
+            sys2 = self.info[2].split(" ")
+            self.ui.lblKernel.setText(sys1[3] +" "+sys1[4]) 
+            self.ui.lblBits.setText(sys1[6])
+            self.ui.lblCompile.setText(sys1[8])
+            self.ui.lblVsystem.setText(sys1[10])
+            self.ui.lblDesktop.setText(sys2[5])
+            self.ui.lblDistro.setText(sys2[7]+" "+sys2[8]+" "+sys2[9])
+        except Exception as e:
+            print (e)
     
     def Temperature(self):
         tem=str(subprocess.check_output(["inxi", "-s"])).split(" ")
         self.ui.lbltCPU.setText(tem[5] + " C")
         self.ui.lbltPCH.setText(tem[8] + " C")
         
-    
+    # thong tin PinS
     def Pin(self):
         self.ui.Pin.setValue(int(psutil.sensors_battery().percent))
         if psutil.sensors_battery().power_plugged:
@@ -310,12 +301,13 @@ class MAINFRMHANDLE(QMainWindow):
     def closeEvent(self, a0: QtGui.QCloseEvent) -> None:
         return super().closeEvent(a0)
     
-    
+    # thong tin o dia 
     def storage(self):
         global platforms
         storage_device= psutil.disk_partitions(all=False)
         for x in storage_device:
-            rowPositions= self.ui.storageTable.rowCount()
+            # tao row 
+            rowPositions= self.ui.storageTable.rowCount()  
             self.ui.storageTable.insertRow(rowPositions)
             self.create_table_widget(rowPositions, 0, x.device, "storageTable")
             self.create_table_widget(rowPositions, 1, x.mountpoint, "storageTable")
@@ -325,7 +317,7 @@ class MAINFRMHANDLE(QMainWindow):
             self.create_table_widget(rowPositions, 4, x.maxfile, "storageTable")
             self.create_table_widget(rowPositions, 5, x.maxpath, "storageTable")
             
-            disk_usage = shutil.disk_usage(x.mountpoint)
+            disk_usage = psutil.disk_usage(x.mountpoint)
             
             self.create_table_widget(rowPositions,6, str(round((disk_usage.total / (1024*1024*1024)), 2)) + "GB","storageTable")
             self.create_table_widget(rowPositions,7, str(round((disk_usage.used / (1024*1024*1024)), 2)) + "GB","storageTable")
@@ -341,7 +333,7 @@ class MAINFRMHANDLE(QMainWindow):
         
         # self.fig = plt.gcf()
         
-            # Create bars and choose color
+        # Create bars and choose color
         self.canvasRam = MplCanvas(self, width=5, height=4, dpi=100)
 
         
@@ -361,7 +353,7 @@ class MAINFRMHANDLE(QMainWindow):
         self.y_data = self.heightRam
         
         self.canvasRam.axes.cla()  # Clear the canvas.
-        self.canvasRam.axes.set_title("CPU")
+        self.canvasRam.axes.set_title("RAM")
         self.canvasRam.axes.set_ylim(0,100)
         self.canvasRam.axes.set_xlim(0,self.n_data)
 
@@ -388,6 +380,7 @@ class MAINFRMHANDLE(QMainWindow):
         self.ui.lblRam2Type.setText(str(self.infoRam[59][8:12]))
         self.ui.lblRam2TypeDetail.setText(str(self.infoRam[60][15:26]))
         self.ui.lblRam2Speed.setText(str(self.infoRam[61][9:18]))
+        
     def ram(self):
 
         totalRam = 1.0
@@ -437,7 +430,6 @@ class MAINFRMHANDLE(QMainWindow):
     def update_CPU(self):
         # Drop off the first y element, append a new one.
         self.y_data = self.heightCPU
-        
         self.canvasCPU.axes.cla()  # Clear the canvas.
         self.canvasCPU.axes.set_title("CPU")
         self.canvasCPU.axes.set_ylim(0,100)
@@ -447,6 +439,7 @@ class MAINFRMHANDLE(QMainWindow):
         # Trigger the canvas to update and redraw.
         self.canvasCPU.draw()
     
+    #thong tin CPU
     def lsCPU(self):
         self.ui.lblCPUArchitecture.setText(self.infoCPU[0].split(" ")[20])
         self.ui.lblCPUonmode.setText(self.infoCPU[1][33:47])
@@ -464,7 +457,6 @@ class MAINFRMHANDLE(QMainWindow):
         self.ui.lblCPUmaxMHZ.setText(self.infoCPU[14][33:37])
         self.ui.lblCPUminMHz.setText(self.infoCPU[15][33:36])
         self.ui.lblCPUBogoMIPS.setText(self.infoCPU[16][33:37])
-        
         
     def cpu(self):
 
@@ -502,7 +494,6 @@ class MAINFRMHANDLE(QMainWindow):
     def dongHo(self):
 
         now = datetime.now()
-
         s = '{0:0>2d}:{1:0>2d}:{2:0>2d}'.format(now.hour, now.minute, now.second)
         self.ui.lblTime.setText(str(s))
 
